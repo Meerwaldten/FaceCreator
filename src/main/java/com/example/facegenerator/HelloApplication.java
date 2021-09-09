@@ -85,6 +85,17 @@ public class HelloApplication extends Application {
         gc.fillOval(285,300,10,10);
     }
 
+    public static void drawHair(){
+
+
+    }
+
+    public static void drawEars(){
+
+
+    }
+
+
     public static void drawBrows() {
         gc.setLineWidth(5);
         gc.setLineCap(StrokeLineCap.ROUND);
