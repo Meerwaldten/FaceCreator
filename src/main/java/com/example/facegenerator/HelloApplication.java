@@ -8,6 +8,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
+import javafx.scene.shape.StrokeLineCap;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -86,6 +87,7 @@ public class HelloApplication extends Application {
 
     public static void drawBrows() {
         gc.setLineWidth(5);
+        gc.setLineCap(StrokeLineCap.ROUND);
         gc.setFill(Color.BLACK);
         gc.strokeLine(220,200,250,190);
         gc.strokeLine(360,200,390,210);
