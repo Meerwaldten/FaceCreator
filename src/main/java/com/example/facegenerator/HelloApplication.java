@@ -7,9 +7,11 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.ArcType;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Random;
 
 public class HelloApplication extends Application {
     static int width = 600;
@@ -36,25 +38,50 @@ public class HelloApplication extends Application {
     }
 
     public static void drawPrimitiveFace() {
+        boolean randomTal = new Random().nextBoolean();
+        boolean randomTal2 = new Random().nextBoolean();
+
         drawShape();
-        drawMouth(50);
-        drawEyes();
+        drawMouth(randomTal2);
+        drawEyes(randomTal);
+        drawNose();
     }
 
     public static void drawShape() {
-        gc.strokeOval(150, 150, 300, 300);
+        gc.setFill(Color.rgb(255,220,177));
+        gc.fillOval(150, 150, 300, 300);
     }
 
-    public static void drawMouth(int mouthSize) {
+    public static void drawMouth(boolean mouthSize) {
         gc.setFill(Color.BLACK);
-        gc.fillOval(280,370,mouthSize,mouthSize);
+        if (mouthSize==true){
+            gc.fillArc(250, 300, 100, 100, 180, 180, ArcType.ROUND);
+            //gc.fillOval(280,370,mouthSize,mouthSize);
+        }
+        else {
+            gc.fillArc(250, 320, 100, 100, 0, 180, ArcType.ROUND);
+        }
     }
 
-    public static void drawEyes() {
-        gc.setFill(Color.BLACK);
-        gc.fillOval(220,220,20,20);
-        gc.fillOval(360,220,20,20);
+    public static void drawEyes(boolean numberOfEyes) {
+        gc.setFill(Color.color(Math.random(),Math.random(), Math.random()));
+        if (numberOfEyes==true) {
+            gc.fillOval(220, 220, 30, 30);
+            gc.fillOval(360, 220, 30, 30);
+        }
+        else {
+            gc.fillRect(220, 220, 30, 15);
+            gc.fillOval(360, 220, 30, 30);
+        }
     }
+
+    public static void drawNose() {
+        gc.setFill(Color.BLACK);
+        gc.fillOval(315, 300, 10,10);
+        gc.fillOval(285,300,10,10);
+    }
+
+
 
     public static void main(String[] args) {
         launch();
