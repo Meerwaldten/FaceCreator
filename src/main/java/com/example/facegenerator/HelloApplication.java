@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Random;
+import java.util.Scanner;
 
 public class HelloApplication extends Application {
     static int width = 600;
@@ -41,10 +42,12 @@ public class HelloApplication extends Application {
         boolean randomTal = new Random().nextBoolean();
         boolean randomTal2 = new Random().nextBoolean();
 
+
         drawShape();
         drawMouth(randomTal2);
         drawEyes(randomTal);
         drawNose();
+        drawBrows();
     }
 
     public static void drawShape() {
@@ -63,14 +66,14 @@ public class HelloApplication extends Application {
         }
     }
 
-    public static void drawEyes(boolean numberOfEyes) {
+    public static void drawEyes(boolean blink) {
         gc.setFill(Color.color(Math.random(),Math.random(), Math.random()));
-        if (numberOfEyes==true) {
+        if (blink==true) {
             gc.fillOval(220, 220, 30, 30);
             gc.fillOval(360, 220, 30, 30);
         }
         else {
-            gc.fillRect(220, 220, 30, 15);
+            gc.fillRect(220, 220, 30, 10);
             gc.fillOval(360, 220, 30, 30);
         }
     }
@@ -81,9 +84,29 @@ public class HelloApplication extends Application {
         gc.fillOval(285,300,10,10);
     }
 
+    public static void drawBrows() {
+        gc.setLineWidth(5);
+        gc.setFill(Color.BLACK);
+        gc.strokeLine(220,200,250,190);
+        gc.strokeLine(360,200,390,210);
+
+        //gc.fillRect(220, 200, 30,10);
+        //gc.fillRect(360,200,30,10);
+
+    }
 
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        /*
+        System.out.println("Welcome to the face generator.\n Please type in 'noget'");
+        String firstInput = scanner.nextLine();
+        System.out.println(firstInput);
+        System.out.println("Please type if you want the face to blink or not.");
+        Boolean blink = scanner.nextBoolean();
+        */
+
+
         launch();
     }
 }
